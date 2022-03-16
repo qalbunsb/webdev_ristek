@@ -21,3 +21,10 @@ Untuk tahap ketiga,perlu dilakukan migrasi terhadap model sebelum menjalankan pr
 
 
 ---
+
+Setelah ketiga tahapan tersebut dilakukan, program bisa dijalankan. Dalam project, sudah terdapat akun superuser dengan username *admin* dan password *password*. Jika ingin membuat akun superuser baru, dapat menjalankan perintah
+
+    > python manage.py createsuperuser
+
+Akun superuser dapat menggunakan seluruh fitur yang ada dalam projek ini. Artikel/Post dapat dibuat dengan akun superuser atau akun yang sudah terakui sebagai staff.
+
