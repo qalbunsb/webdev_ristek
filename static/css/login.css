@@ -1,0 +1,17 @@
+.form-control{
+    border: 4px solid;
+    height: 77px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    border-color: #8A716A;
+  }
+
+.btn-login{
+    font-family: 'Open Sans', sans-serif;
+    height: 77px;
+    /* width: 385px; */
+    left: 134px;
+    top: 591px;
+    border-radius: 20px;
+    background: #FFC948;
+}

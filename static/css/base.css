@@ -1,0 +1,21 @@
+html {
+    /* To make use of full height of page*/
+    min-height: 100%;
+    margin: 0;
+}
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+.navbar-custom{
+    background-color: #086788;
+}
+
+.nav-element {
+    color: white;
+}
+
+body{
+    background-color: white;
+}

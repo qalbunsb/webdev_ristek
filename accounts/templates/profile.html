@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block main %} 
+<p class="text-center h4">Name : {{request.user.profile.full_name}}</p>
+<p class="text-center h4">Username : {{request.user.username}}</p>
+<form action="{% url 'logout' %}" class="text-center">
+    <input type="submit" value="Logout" class="btn btn-lg btn-primary">
+</form>
+{% endblock %}

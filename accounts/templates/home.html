@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+ <link rel="stylesheet" href="{% static 'css/home.css/' %}">
+{% endblock %}
+{% block main %}
+    {{block.super}}
+    <div class="container p-2">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="h1">Latest Post</h1>
+                <hr/>
+                <!-- Latest blog post-->
+                <div class="card">
+                    {% if latest %}
+                        {% if latest.image %}
+                        <a href="{% url 'blogpost:view_post' latest.pk %}"><img class="card-img-top" src="{{latest.image.url}}" alt="latest Image" /></a>
+                        {% else %}
+                        <a href="{% url 'blogpost:view_post' latest.pk %}"><img class="card-img-top" src="{% static 'images/photo_post_template.png' %}" alt="latest Image" /></a>
+                        {% endif %}
+                        <div class="card-body">
+                            <small class="small text-muted">{{latest.date}} | {{latest.author.username}}</small>
+                            <h2 class="card-title">{{latest.title}}</h2>
+                            <p class="card-text">{{latest.body| striptags | truncatewords:50 |safe}}</p>
+                            <a class="btn btn-primary" href="{% url 'blogpost:view_post' latest.pk %}">Read more →</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                <hr/>
+            </div>
+            <div class="col-4">
+                <h2 class="h2 mt-2">Search by Category</h2>
+                <hr/>
+                <div class="card mb-4">
+                    <div class="card-header">Categories</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <ul class="list-unstyled mb-0">
+                                    {% for category in categories %}
+                                        <li><a href="{% url 'blogpost:category_posts' category.name %}">{{category.name}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="h2">All Posts</h2>
+                <hr/>
+                <div class="card-deck">
+                    
+                </div>
+                <div class="row row-cols-2">
+                    {% for post in posts %}
+                    <div class="col-6">
+                        <div class="card mb-4">
+                            {% if post.image %}
+                            <a href="{% url 'blogpost:view_post' post.pk %}"><img class="card-img-top" src="{{post.image.url}}" alt="Post Image" /></a>
+                            {% else %}
+                            <a href="{% url 'blogpost:view_post' post.pk %}"><img class="card-img-top" src="{% static 'images/photo_post_template.png' %}" alt="Post  Image" /></a>
+                            {% endif %}
+                            <div class="card-body">
+                                <div class="small text-muted">{{post.date}} | {{post.author.username}}</div>
+                                <h2 class="card-title">{{post.title}}</h2>
+                                <p class="card-text">{{post.body| striptags | truncatewords:20 | safe}}</p>
+                                <a class="btn btn-primary" href="{% url 'blogpost:view_post' post.pk %}">Read more →</a>
+                            </div>
+                        </div>
+                    </div>  
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+   
+{% endblock %}

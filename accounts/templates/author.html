@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+ <link rel="stylesheet" href="{% static 'css/author.css/' %}">
+{% endblock %}
+{% block main %}
+    <div class="container p-4">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header h1 text-center">Welcome to My Blog!</div>
+                    <img src="{% static 'images/qalbun.jpg' %}" class="card-img-top" alt="Qalbun Photo">
+                    
+                    <div class="card-body">
+                        <div class="card-title h4">About Me</div>
+                        <p class="card-text text-justify">
+                            I'm Qalbun Salim Buanaputra, an undergraduate student majoring in Computer Science
+                            at University of Indonesia. I'm currently doing my 4th semester and i am looking forward
+                            to be a member of RISTEK Fasilkom UI. 
+                            <br>
+                            <br>
+                            Currently, i don't have any professional experiences
+                            related to web development, but i have participated in college web projects for final exam.
+                            At that time, my group and i made a website with Django Framework named RuangSinggah. 
+                            RuangSinggah is a mental-health
+                            platform where users can make consultations, read articles, and also take a psychology quiz. In RuangSinggah,
+                            i contributed on making authentication and registration system for the website, and also creating
+                            API endpoints so that the data can be used in RuangSinggah mobile app.
+                            <br>
+                            <br>
+                            I have experiences in Django and Bootstrap framework, and few experiences in Java Spring Boot.
+                            For mobile apps, i have few experiences using Flutter as a front-end framework.
+                            I'm looking forward to learn new tools in the future, especially front-end frameworks, such as
+                            Javascript React.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

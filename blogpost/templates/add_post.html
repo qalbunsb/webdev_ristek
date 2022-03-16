@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block script %}
+    {{ blog_form.media }}
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col align-self-center"> 
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in blog_form %}
+                        <p class="text-capitalize text-center h5 header">{{field.label}}</p>
+                        {{field}}
+                    {% endfor %}
+                    <br>
+                    <input type="submit" value="Create Post" class="btn btn-lg btn-primary mt-2">
+                </form>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-title text-center m-1">Create Category</h5>
+                    <div class="card-body">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {% for field in category_form %}
+                                {{field}}
+                            {% endfor %}
+                            <br>
+                            <input type="submit" value="Create Category" class="btn btn-lg btn-secondary">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

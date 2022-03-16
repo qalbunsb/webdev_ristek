@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+ <link rel="stylesheet" href="{% static 'css/post_categories.css' %}">
+{% endblock %}
+{% block main %}
+    <div class="container p-3">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1">All Posts in {{category.name}}</h1>
+                <hr>
+                <div class="row row-cols-2">
+                    {% for post in posts %}
+                    <div class="col-6">
+                        <div class="card mb-4">
+                            {% if post.image %}
+                            <a href="{% url 'blogpost:view_post' post.pk %}"><img class="card-img-top" src="{{post.image.url}}" alt="Post Image" /></a>
+                            {% else %}
+                            <a href="{% url 'blogpost:view_post' post.pk %}"><img class="card-img-top" src="{% static 'images/photo_post_template.png' %}" alt="Post Image" /></a>
+                            {% endif %}
+                            <div class="card-body">
+                                <div class="small text-muted">{{post.date}}</div>
+                                <h2 class="card-title">{{post.title}}</h2>
+                                <p class="card-text">{{post.body| striptags | truncatewords:20 | safe}}</p>
+                                <a class="btn btn-primary" href="{% url 'blogpost:view_post' post.pk %}">Read more →</a>
+                            </div>
+                        </div>
+                    </div>  
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+{% endblock %}
